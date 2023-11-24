@@ -1,4 +1,4 @@
-# community_store_squaure
+# Community Store Square
 Square payment add-on for Community Store for Concrete CMS
 https://squareup.com/
 
