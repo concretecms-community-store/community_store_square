@@ -60,15 +60,32 @@ extract($vars);
 
                     var amount =  '<?= $squareTotal; ?>';
 
+                    var givenName = <?= json_encode($givenName); ?>;
+                    var familyName = <?= json_encode($familyName); ?>;
+                    var email = <?= json_encode($email); ?>;
+                    var phone = <?= json_encode($phone); ?>;
+                    var addressLines = [<?= json_encode($addressLines[0]); ?>, <?= json_encode($addressLines[1]); ?>];
+                    var city = <?= json_encode($city); ?>;
+                    var state = <?= json_encode($state); ?>;
+                    var countryCode =<?= json_encode($countryCode); ?>;
+
                     const verificationDetails = {
                         amount: amount,
                         /* collected from the buyer */
                         billingContact: {
-
+                            givenName: givenName,
+                            familyName: familyName,
+                            email: email,
+                            phone: phone,
+                            addressLines: addressLines,
+                            city: city,
+                            state: state,
+                            countryCode: countryCode,
                         },
                         currencyCode: '<?= $squareCurrencyCode; ?>',
                         intent: 'CHARGE',
                     };
+
 
                     const verificationResults = await payments.verifyBuyer(
                         result.token,

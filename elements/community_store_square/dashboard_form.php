@@ -45,7 +45,7 @@ extract($vars);
 </div>
 
 <div class="form-group">
-    <?=$form->label('squareSandboxLocation',t('Sandbox Location ID'))?>
+    <?=$form->label('squareSandboxLocation',t('Sandbox Location'))?>
     <input type="text" name="squareSandboxLocation" value="<?=$squareSandboxLocation?>" class="form-control">
 </div>
 
@@ -60,6 +60,6 @@ extract($vars);
 </div>
 
 <div class="form-group">
-    <?=$form->label('squareLiveLocation',t('Live Location ID'))?>
+    <?=$form->label('squareLiveLocation',t('Live Location'))?>
     <input type="text" name="squareLiveLocation" value="<?=$squareLiveLocation?>" class="form-control">
 </div>

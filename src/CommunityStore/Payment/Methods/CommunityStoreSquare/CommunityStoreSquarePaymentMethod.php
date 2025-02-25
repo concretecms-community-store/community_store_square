@@ -40,7 +40,7 @@ class CommunityStoreSquarePaymentMethod extends StorePaymentMethod
         $this->set('squareGateways', $gateways);
 
         $currencies = array(
-          'UAD'=>t('Australian Dollars'),
+          'AUD'=>t('Australian Dollars'),
           'CAD'=>t('Canadian Dollar'),
           'JPY'=>t('Japanese Yen'),
           'USD'=>t('US Dollars'),
@@ -108,6 +108,22 @@ class CommunityStoreSquarePaymentMethod extends StorePaymentMethod
 
         $this->set('squareTotal', number_format(StoreCalculator::getGrandTotal(), 2, '.', ''));
 
+        $givenName = $customer->getValue('billing_first_name');
+        $familyName = $customer->getValue('billing_last_name');
+        $phone = $customer->getValue('billing_phone');
+        $address1 = $customer->getAddressValue('billing_address', 'address1');
+        $address2 = $customer->getAddressValue('billing_address', 'address2');
+        $city = $customer->getAddressValue('billing_address', 'city');
+        $state_province = $customer->getAddressValue('billing_address', 'state_province');
+        $country = $customer->getAddressValue('billing_address', 'country');
+
+        $this->set('givenName', $givenName);
+        $this->set('familyName', $familyName);
+        $this->set('phone', $phone);
+        $this->set('addressLines', [$address1, $address2]);
+        $this->set('city', $city);
+        $this->set('state', $state_province);
+        $this->set('countryCode', $country);
 
         $pmID = StorePaymentMethod::getByHandle('community_store_square')->getID();
         $this->set('pmID', $pmID);
